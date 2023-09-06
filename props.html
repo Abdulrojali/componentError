@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>membuat dan manipulasi data didalam component</title>
+</head>
+<body>
+    <div class="content">
+        <input-Costum></input-Costum>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+let content=Vue.createApp({})
+    content.component('input-Costum',{
+        template:`
+        <div class="parentInput">
+            <label for="">masukkan todo</label>
+            <div class="todolist">
+                <input type="text" class="teksContent" v-model="teksContent" placeholder="todolist">
+                <button @click="addTodo">add</button>
+            </div>
+            <div class='teksOuput'>{{list}}</div>
+        </div>`,
+        data:function() {
+            return {
+                teksContent:'',
+                list:[]
+            }
+        },
+        methods:{
+            addTodo :function(){
+                this.list.add(this.teksContent)
+            }
+        },
+    })  
+    content.mount('.content')  
+    </script>
+</body>
+</html>
